@@ -104,7 +104,6 @@ void loop() {
     delaycounter=0;
   }
   else temp_direction=0;
-  //nollasta oikealle
 
   //scratch debouncing
   if (stopcounter > stopdelay ){
