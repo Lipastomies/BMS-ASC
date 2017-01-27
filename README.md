@@ -1,5 +1,5 @@
 # BMS-ASC
-BMS (BeatMania Simulator) controller, powered by Arduino Leonardo.
+BMS (BeatMania Simulator) (Arcade Style) Controller, powered by Arduino Leonardo.
 
 ## Dependencies
 The controller uses [NicoHood's HID library](https://github.com/NicoHood/HID) for Arduino.
