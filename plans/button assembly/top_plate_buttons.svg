@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.92.0 r"
-   sodipodi:docname="acrylic_cover_buttons_inkscape.svg">
+   sodipodi:docname="top_plate_buttons.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -25,11 +25,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.60076455"
-     inkscape:cx="349.97709"
-     inkscape:cy="384.72068"
+     inkscape:zoom="1.2015291"
+     inkscape:cx="106.65158"
+     inkscape:cy="897.55967"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer6"
+     inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:window-width="1366"
      inkscape:window-height="719"
@@ -72,7 +72,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -168,31 +168,31 @@
      inkscape:label="screwholes">
     <circle
        style="display:inline;opacity:1;fill:none;fill-opacity:0.49803922;fill-rule:evenodd;stroke:#000000;stroke-width:0.34568852;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="path4299-6-2-1"
-       cx="1531.4973"
-       cy="360.92502"
-       r="7.4409456"
-       transform="rotate(31.739179,-100.48501,-1984.2314)" />
+       id="path4299-6-2-1-6-3"
+       cx="74.000458"
+       cy="17.439581"
+       r="7.9724412"
+       transform="rotate(31.739179)" />
     <circle
        style="display:inline;opacity:1;fill:none;fill-opacity:0.49803922;fill-rule:evenodd;stroke:#000000;stroke-width:0.34568852;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="path4299-6-2-1-4"
-       cx="2164.3137"
-       cy="-30.508381"
-       r="7.4409456"
-       transform="rotate(31.739179,-100.48501,-1984.2314)" />
+       id="path4299-6-2-1-6-3-6"
+       cx="706.81683"
+       cy="-373.9938"
+       r="7.9724407"
+       transform="rotate(31.739179)" />
     <circle
        style="display:inline;opacity:1;fill:none;fill-opacity:0.49803922;fill-rule:evenodd;stroke:#000000;stroke-width:0.34568852;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="path4299-6-2-1-7"
-       cx="1735.6008"
-       cy="-723.59302"
-       r="7.4409456"
-       transform="rotate(31.739179,-100.48501,-1984.2314)" />
+       id="path4299-6-2-1-6-3-7"
+       cx="1135.5295"
+       cy="319.09079"
+       r="7.9724407"
+       transform="rotate(31.739179)" />
     <circle
        style="display:inline;opacity:1;fill:none;fill-opacity:0.49803922;fill-rule:evenodd;stroke:#000000;stroke-width:0.34568852;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="path4299-6-2-1-6"
-       cx="1102.7845"
-       cy="-332.15964"
-       r="7.4409456"
-       transform="rotate(31.739179,-100.48501,-1984.2314)" />
+       id="path4299-6-2-1-6-3-5"
+       cx="502.71323"
+       cy="710.52417"
+       r="7.9724407"
+       transform="rotate(31.739179)" />
   </g>
 </svg>
