@@ -86,7 +86,7 @@ void setup() {
 void loop() {
     currentTime = millis();
     if ((long)(currentTime-(unsigned long)(previousTime+DELAY))>=0){
-        previoustime = currentTime;
+        previousTime = currentTime;
         //read the keys and communicate accordingly, as well as set the leds
         for (int i=0;i<9;i++){
             if(digitalRead(keypins[i])==LOW){
