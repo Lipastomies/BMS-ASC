@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.2015291"
-     inkscape:cx="311.21299"
-     inkscape:cy="445.12582"
+     inkscape:zoom="3.3984375"
+     inkscape:cx="391.29859"
+     inkscape:cy="460.1907"
      inkscape:document-units="mm"
      inkscape:current-layer="layer3"
      showgrid="true"
@@ -38,22 +38,23 @@
      inkscape:window-maximized="0"
      inkscape:snap-center="true"
      inkscape:snap-object-midpoints="true"
-     inkscape:snap-grids="false"
+     inkscape:snap-grids="true"
      inkscape:snap-page="false"
-     inkscape:snap-bbox="false"
-     inkscape:bbox-nodes="true"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-nodes="false"
      inkscape:object-paths="true"
      inkscape:snap-intersection-paths="true"
      inkscape:object-nodes="true"
      inkscape:snap-smooth-nodes="false"
      inkscape:snap-to-guides="false"
-     inkscape:snap-nodes="true"
+     inkscape:snap-nodes="false"
      inkscape:snap-others="true"
      inkscape:snap-global="true"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
-     fit-margin-bottom="0">
+     fit-margin-bottom="0"
+     inkscape:snap-bbox-midpoints="true">
     <inkscape:grid
        type="xygrid"
        id="grid4136"
@@ -125,39 +126,38 @@
      style="display:inline"
      transform="translate(-75.765988,-288.36438)">
     <circle
-       transform="translate(3.6661427e-7,2.4167387e-6)"
        style="display:inline;opacity:1;fill:none;fill-opacity:0.49803922;fill-rule:evenodd;stroke:#000000;stroke-width:0.35433072;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4157-7-4-7-4"
        cx="513.77954"
        cy="726.37793"
-       r="26.450272" />
+       r="26.574804" />
     <circle
-       transform="translate(3.6661427e-7,2.4167387e-6)"
        style="display:inline;opacity:1;fill:none;fill-opacity:0.49803922;fill-rule:evenodd;stroke:#000000;stroke-width:0.35433072;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4157-7-4-0-1-1-66-3"
        cx="453.5433"
        cy="726.37793"
-       r="7.4409447" />
+       r="7.4409447"
+       transform="translate(3.6661427e-7,2.4167387e-6)" />
     <circle
-       transform="translate(3.6661427e-7,2.4167387e-6)"
        style="display:inline;opacity:1;fill:none;fill-opacity:0.49803922;fill-rule:evenodd;stroke:#000000;stroke-width:0.35433072;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4157-7-4-0-1-1-66-3-6"
        cx="513.77954"
        cy="666.14172"
-       r="7.4409442" />
+       r="7.4409442"
+       transform="translate(3.6661427e-7,2.4167387e-6)" />
     <circle
-       transform="translate(3.6661427e-7,2.4167387e-6)"
        style="display:inline;opacity:1;fill:none;fill-opacity:0.49803922;fill-rule:evenodd;stroke:#000000;stroke-width:0.35433072;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4157-7-4-0-1-1-66-3-6-7"
        cx="574.01575"
        cy="726.37793"
-       r="7.4409437" />
+       r="7.4409437"
+       transform="translate(3.6661427e-7,2.4167387e-6)" />
     <circle
-       transform="translate(3.6661427e-7,2.4167387e-6)"
        style="display:inline;opacity:1;fill:none;fill-opacity:0.49803922;fill-rule:evenodd;stroke:#000000;stroke-width:0.35433072;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path4157-7-4-0-1-1-66-3-6-5"
        cx="513.77954"
        cy="786.61414"
-       r="7.4409437" />
+       r="7.4409437"
+       transform="translate(3.6661427e-7,2.4167387e-6)" />
   </g>
 </svg>
