@@ -21,7 +21,8 @@ void doEncoderB();
 // Encoder     0      1
 //
 
-#define DELAY 2  // Delay per loop in ms
+#define DELAY 2  // Time interval between loops in milliseconds.
+
  enum PinAssignments
  {
   encoderPinA = 0,
@@ -29,9 +30,16 @@ void doEncoderB();
  };
 //This is up to encoder pin wiring
 
+//timing variables
+unsigned long previousTime = 0, currentTime = 0;
+
+//pins for keys
 int keypins[] = {A0,A1,A2,A3,A4,A5,11,12,13};
+//pins for key leds
 int ledpins[] = {2,3,4,5,6,7,8,9,10};
+//keys that pressing buttons will send to computer
 char keyvalues[] = {' ','\n','a','s','d','f','g','h','j'};
+//keys that scratching will send to computer
 char scratchvalues[] = {'u','i'};
 
 int encoderPos = 0;
@@ -52,123 +60,132 @@ int delaycounter=0;
 int stopcounter=0;
 
 void setup() {
-  //find out encoder pin interrupt numbers
-  int encoder0 = digitalPinToInterrupt(encoderPinA);
-  int encoder1 = digitalPinToInterrupt(encoderPinB);
+    //find out encoder pin interrupt numbers
+    int encoder0 = digitalPinToInterrupt(encoderPinA);
+    int encoder1 = digitalPinToInterrupt(encoderPinB);
 
-  for (int i= 0;i<9;i++)
+    for (int i= 0;i<9;i++)
     pinMode(keypins[i], INPUT_PULLUP);
 
-  NKROKeyboard.begin();
-  for (int i=0;i<9;i++)
+    NKROKeyboard.begin();
+    for (int i=0;i<9;i++)
     pinMode(ledpins[i], OUTPUT);
-  pinMode(encoderPinA, INPUT_PULLUP);
-  pinMode(encoderPinB, INPUT_PULLUP);
- 
-  attachInterrupt(encoder0, doEncoderA, CHANGE);
-  attachInterrupt(encoder1, doEncoderB, CHANGE);
-  //serial for debugging e.g. the scratch
-  //Serial.begin(9600);
+    pinMode(encoderPinA, INPUT_PULLUP);
+    pinMode(encoderPinB, INPUT_PULLUP);
+
+    attachInterrupt(encoder0, doEncoderA, CHANGE);
+    attachInterrupt(encoder1, doEncoderB, CHANGE);
+    //serial for debugging e.g. the scratch
+    //Serial.begin(9600);
+    
+    //get times for first time
+    previousTime = millis();
+    currentTime = previousTime;
 }
 
 void loop() {
-  //read the keys and communicate accordingly, as well as set the leds
-  for (int i=0;i<9;i++){
-    if(digitalRead(keypins[i])==LOW){
-    NKROKeyboard.press(keyvalues[i]);
-    digitalWrite(ledpins[i],HIGH);
+    currentTime = millis();
+    if ((long)(currentTime-(unsigned long)(previousTime+DELAY))>=0){
+        previousTime = currentTime;
+        //read the keys and communicate accordingly, as well as set the leds
+        for (int i=0;i<9;i++){
+            if(digitalRead(keypins[i])==LOW){
+                NKROKeyboard.press(keyvalues[i]);
+                digitalWrite(ledpins[i],HIGH);
+            }
+            if(digitalRead(keypins[i])==HIGH){
+                NKROKeyboard.release(keyvalues[i]);
+                digitalWrite(ledpins[i],LOW);
+            }
+        }
+        //Encoder Reset
+        rotating = true;
+        if (encoderPos != 0)
+        {
+            tempposition += encoderPos;
+            encoderPos = 0;
+        }
+
+        //scratch registration
+        delaycounter++;
+        if (tempposition > scratch_sense){
+            temp_direction=1;
+            tempposition=0;  
+            delaycounter=0;
+        }
+        else if (tempposition < -scratch_sense){
+            temp_direction=-1;
+            tempposition=0;
+            delaycounter=0;
+        }
+        else temp_direction=0;
+
+        //scratch debouncing
+        if (stopcounter > stopdelay ){
+            tempposition=0;
+            temp_direction=0;
+            stopcounter=0;
+        }
+        if (temp_direction == 0)
+            stopcounter++;
+
+        //scratch communication to the computer
+        //scratching from zero to right
+        if (sc_right == 0 && temp_direction == 1){
+            NKROKeyboard.release(scratchvalues[0]);
+            NKROKeyboard.press(scratchvalues[1]);
+            sc_right =1;
+        }
+        //scratching from zero to left
+        else if (sc_left==0 && temp_direction == -1){
+            NKROKeyboard.release(scratchvalues[1]);
+            NKROKeyboard.press(scratchvalues[0]);
+            sc_left =1;
+        }
+        //scratching from left to right
+        else if (sc_left==1 && temp_direction == 1){
+            NKROKeyboard.release(scratchvalues[0]);
+            NKROKeyboard.press(scratchvalues[1]);
+            sc_left=0;
+            sc_right=1;
+        }
+        //scratching from right to left
+        else if (sc_right==1 && temp_direction == -1){
+            NKROKeyboard.release(scratchvalues[1]);
+            NKROKeyboard.press(scratchvalues[0]);
+            sc_left=1;
+            sc_right=0;
+        }
+        //scratch deactivation
+
+        //scratch weas moving to left, but has stopped/is stopping
+        else if (sc_left==1 && temp_direction==0 && delaycounter > scratchdelay){
+            NKROKeyboard.release(scratchvalues[0]);
+            sc_left=0;
+            delaycounter= 0;
+        }
+        //the same, but for right
+        else if (sc_right==1 && temp_direction==0 && delaycounter > scratchdelay){
+            NKROKeyboard.release(scratchvalues[1]);
+            sc_right=0;
+            delaycounter=0;
+        }
+
+        //delay(DELAY);
+
+        //report of scratch for debugging. Good for adjusting scratch parameters.
+        /* 
+        Serial.print(sc_left);
+        Serial.print(' ');
+        Serial.print(sc_right);
+        Serial.print(' ');
+        Serial.print(temp_direction);
+        Serial.print(' ');
+        Serial.print(tempposition);
+        Serial.print('\n');  
+        */
+        
     }
-    if(digitalRead(keypins[i])==HIGH){
-      NKROKeyboard.release(keyvalues[i]);
-      digitalWrite(ledpins[i],LOW);
-    }
-  }
-  //Encoder Reset
-  rotating = true;
-  if (encoderPos != 0)
-  {
-    tempposition += encoderPos;
-    encoderPos = 0;
-  }
-
-  //scratch registration
-  delaycounter++;
-  if (tempposition > scratch_sense){
-    temp_direction=1;
-    tempposition=0;  
-    delaycounter=0;
-  }
-  else if (tempposition < -scratch_sense){
-    temp_direction=-1;
-    tempposition=0;
-    delaycounter=0;
-  }
-  else temp_direction=0;
-
-  //scratch debouncing
-  if (stopcounter > stopdelay ){
-    tempposition=0;
-    temp_direction=0;
-    stopcounter=0;
-  }
-  if (temp_direction == 0)
-    stopcounter++;
-    
-  //scratch communication to the computer
-  //scratching from zero to right
-  if (sc_right == 0 && temp_direction == 1){
-    NKROKeyboard.release(scratchvalues[0]);
-    NKROKeyboard.press(scratchvalues[1]);
-    sc_right =1;
-  }
-  //scratching from zero to left
-  else if (sc_left==0 && temp_direction == -1){
-    NKROKeyboard.release(scratchvalues[1]);
-    NKROKeyboard.press(scratchvalues[0]);
-    sc_left =1;
-  }
-  //scratching from left to right
-  else if (sc_left==1 && temp_direction == 1){
-    NKROKeyboard.release(scratchvalues[0]);
-    NKROKeyboard.press(scratchvalues[1]);
-    sc_left=0;
-    sc_right=1;
-  }
-  //scratching from right to left
-  else if (sc_right==1 && temp_direction == -1){
-    NKROKeyboard.release(scratchvalues[1]);
-    NKROKeyboard.press(scratchvalues[0]);
-    sc_left=1;
-    sc_right=0;
-  }
-  //scratch deactivation
-  
-  //scratch weas moving to left, but has stopped/is stopping
-  else if (sc_left==1 && temp_direction==0 && delaycounter > scratchdelay){
-    NKROKeyboard.release(scratchvalues[0]);
-    sc_left=0;
-    delaycounter= 0;
-  }
-  //the same, but for right
-  else if (sc_right==1 && temp_direction==0 && delaycounter > scratchdelay){
-    NKROKeyboard.release(scratchvalues[1]);
-    sc_right=0;
-    delaycounter=0;
-  }
-  
-  delay(DELAY);
-
-  //report of scratch for debugging. Good for adjusting scratch parameters.
-  /* 
-  Serial.print(sc_left);
-  Serial.print(' ');
-  Serial.print(sc_right);
-  Serial.print(' ');
-  Serial.print(temp_direction);
-  Serial.print(' ');
-  Serial.print(tempposition);
-  Serial.print('\n');  
-  */
 }
 
 void doEncoderA()
