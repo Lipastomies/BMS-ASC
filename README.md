@@ -21,10 +21,11 @@ The case has a top plate that is 528X270mm big. The top plate is sunk into the f
 I made the case from MDF, but any kind of wood or plywood is acceptable. What matters is that the material is easy to work with.
 
 ### Frame
-The frame consists of four pieces of 16mm MDF:
+The frame consists of five pieces of 16mm MDF:
 2X 560X80mm pieces for the upper and lower sides
-2X 270X80mm pieces for the left and right sides.
-These pieces are joined together using glue and buttjoints. In addition to this, the frame has an extra 270X80mm piece of MDF as a support in the middle of the frame, to keep the longer sides from caving in or deforming. The frame also has wooden blocks for threaded inserts to be inserted in it, so that the turntable and button assemblies can be attached to it.
+2X 270X80mm pieces for the left and right sides
+1X 270X60mm piece for a middle support.
+These pieces are joined together using glue and buttjoints. The frame also has wooden blocks for threaded inserts to be inserted in it, so that the turntable and button assemblies can be attached to it.
 
 ### Top plate
 The controller top plate acts as a base for our turntable and button assemblies. The top plate 
