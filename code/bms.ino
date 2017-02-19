@@ -1,5 +1,4 @@
 #include "HID-Project.h"
-
 void doEncoderA();
 void doEncoderB();
 
@@ -44,7 +43,9 @@ char scratchvalues[] = {'u','i'};
 
 int encoderPos = 0;
 static boolean rotating = false;
- 
+
+bool bms_mode = true;
+
 boolean A_set = false;              
 boolean B_set = false;
  
@@ -81,12 +82,47 @@ void setup() {
     //get times for first time
     previousTime = millis();
     currentTime = previousTime;
+    Mouse.begin();
 }
 
 void loop() {
     currentTime = millis();
     if ((long)(currentTime-(unsigned long)(previousTime+DELAY))>=0){
         previousTime = currentTime;
+        //check for TT type change
+        //bms
+        if (digitalRead(keypins[0])==LOW && digitalRead(keypins[1])==LOW&&digitalRead(keypins[3])==LOW && bms_mode==false){
+            digitalWrite(ledpins[0],HIGH);
+            digitalWrite(ledpins[1],HIGH);
+            digitalWrite(ledpins[3],HIGH);
+            for (int i = 0;i<4;i++){
+                if (digitalRead(keypins[0])==LOW&&digitalRead(keypins[1])==LOW&&digitalRead(keypins[3])==LOW){
+                    digitalWrite(ledpins[i*2+2],HIGH);
+                    if(i==3)
+                        bms_mode=true;
+                }
+                else break;
+                delay(250);   
+            }
+            for (int i=0;i<9;i++)
+              digitalWrite(ledpins[i],LOW);
+        }
+        if (digitalRead(keypins[0])==LOW && digitalRead(keypins[1])== LOW && digitalRead(keypins[7])==LOW && bms_mode==true){
+            digitalWrite(ledpins[0],HIGH);
+            digitalWrite(ledpins[1],HIGH);
+            digitalWrite(ledpins[7],HIGH);
+            for (int i = 0;i<4;i++){
+                if (digitalRead(keypins[0])==LOW&&digitalRead(keypins[1])==LOW&&digitalRead(keypins[7])==LOW){
+                    digitalWrite(ledpins[i*2+2],HIGH);
+                    if(i==3)
+                        bms_mode=false;
+                }
+                else break;
+                delay(250);   
+            }
+          for (int i=0;i<9;i++)
+              digitalWrite(ledpins[i],LOW);
+        }
         //read the keys and communicate accordingly, as well as set the leds
         for (int i=0;i<9;i++){
             if(digitalRead(keypins[i])==LOW){
@@ -102,77 +138,81 @@ void loop() {
         rotating = true;
         if (encoderPos != 0)
         {
-            tempposition += encoderPos;
+            //if bms-mode
+            if(bms_mode)
+              tempposition += encoderPos;
+            //else if 'analog' mode
+            if (!bms_mode)
+                Mouse.move(encoderPos,0,0);
             encoderPos = 0;
         }
-
-        //scratch registration
-        delaycounter++;
-        if (tempposition > scratch_sense){
-            temp_direction=1;
-            tempposition=0;  
-            delaycounter=0;
+        //if bms-mode on
+        if (bms_mode){
+            //scratch registration
+            delaycounter++;
+            if (tempposition > scratch_sense){
+                temp_direction=1;
+                tempposition=0;  
+                delaycounter=0;
+            }
+            else if (tempposition < -scratch_sense){
+                temp_direction=-1;
+                tempposition=0;
+                delaycounter=0;
+            }
+            else temp_direction=0;
+    
+            //scratch debouncing
+            if (stopcounter > stopdelay ){
+                tempposition=0;
+                temp_direction=0;
+                stopcounter=0;
+            }
+            if (temp_direction == 0)
+                stopcounter++;
+    
+            //scratch communication to the computer
+            //scratching from zero to right
+            if (sc_right == 0 && temp_direction == 1){
+                NKROKeyboard.release(scratchvalues[0]);
+                NKROKeyboard.press(scratchvalues[1]);
+                sc_right =1;
+            }
+            //scratching from zero to left
+            else if (sc_left==0 && temp_direction == -1){
+                NKROKeyboard.release(scratchvalues[1]);
+                NKROKeyboard.press(scratchvalues[0]);
+                sc_left =1;
+            }
+            //scratching from left to right
+            else if (sc_left==1 && temp_direction == 1){
+                NKROKeyboard.release(scratchvalues[0]);
+                NKROKeyboard.press(scratchvalues[1]);
+                sc_left=0;
+                sc_right=1;
+            }
+            //scratching from right to left
+            else if (sc_right==1 && temp_direction == -1){
+                NKROKeyboard.release(scratchvalues[1]);
+                NKROKeyboard.press(scratchvalues[0]);
+                sc_left=1;
+                sc_right=0;
+            }
+            //scratch deactivation
+    
+            //scratch weas moving to left, but has stopped/is stopping
+            else if (sc_left==1 && temp_direction==0 && delaycounter > scratchdelay){
+                NKROKeyboard.release(scratchvalues[0]);
+                sc_left=0;
+                delaycounter= 0;
+            }
+            //the same, but for right
+            else if (sc_right==1 && temp_direction==0 && delaycounter > scratchdelay){
+                NKROKeyboard.release(scratchvalues[1]);
+                sc_right=0;
+                delaycounter=0;
+            }
         }
-        else if (tempposition < -scratch_sense){
-            temp_direction=-1;
-            tempposition=0;
-            delaycounter=0;
-        }
-        else temp_direction=0;
-
-        //scratch debouncing
-        if (stopcounter > stopdelay ){
-            tempposition=0;
-            temp_direction=0;
-            stopcounter=0;
-        }
-        if (temp_direction == 0)
-            stopcounter++;
-
-        //scratch communication to the computer
-        //scratching from zero to right
-        if (sc_right == 0 && temp_direction == 1){
-            NKROKeyboard.release(scratchvalues[0]);
-            NKROKeyboard.press(scratchvalues[1]);
-            sc_right =1;
-        }
-        //scratching from zero to left
-        else if (sc_left==0 && temp_direction == -1){
-            NKROKeyboard.release(scratchvalues[1]);
-            NKROKeyboard.press(scratchvalues[0]);
-            sc_left =1;
-        }
-        //scratching from left to right
-        else if (sc_left==1 && temp_direction == 1){
-            NKROKeyboard.release(scratchvalues[0]);
-            NKROKeyboard.press(scratchvalues[1]);
-            sc_left=0;
-            sc_right=1;
-        }
-        //scratching from right to left
-        else if (sc_right==1 && temp_direction == -1){
-            NKROKeyboard.release(scratchvalues[1]);
-            NKROKeyboard.press(scratchvalues[0]);
-            sc_left=1;
-            sc_right=0;
-        }
-        //scratch deactivation
-
-        //scratch weas moving to left, but has stopped/is stopping
-        else if (sc_left==1 && temp_direction==0 && delaycounter > scratchdelay){
-            NKROKeyboard.release(scratchvalues[0]);
-            sc_left=0;
-            delaycounter= 0;
-        }
-        //the same, but for right
-        else if (sc_right==1 && temp_direction==0 && delaycounter > scratchdelay){
-            NKROKeyboard.release(scratchvalues[1]);
-            sc_right=0;
-            delaycounter=0;
-        }
-
-        //delay(DELAY);
-
         //report of scratch for debugging. Good for adjusting scratch parameters.
         /* 
         Serial.print(sc_left);
