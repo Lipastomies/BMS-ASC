@@ -41,7 +41,7 @@ char keyvalues[] = {' ','\n','a','s','d','f','g','h','j'};
 //keys that scratching will send to computer
 char scratchvalues[] = {'u','i'};
 
-int encoderPos = 0;
+volatile int encoderPos = 0;
 static boolean rotating = false;
 
 bool bms_mode = true;
