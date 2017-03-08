@@ -9,14 +9,14 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="280.39999mm"
-   height="191.22496mm"
-   viewBox="0 0 993.54335 677.56877"
+   width="249.99998mm"
+   height="170mm"
+   viewBox="0 0 885.82678 602.36222"
    id="svg4233"
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="TT_side_diagram.svg"
-   inkscape:export-filename="/home/lipastomies/Desktop/yhhh.png"
+   inkscape:export-filename="C:\Users\Armando\Pictures\iidx_ohjain\side_diagram.png"
    inkscape:export-xdpi="100"
    inkscape:export-ydpi="100">
   <defs
@@ -29,10 +29,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.1191856"
-     inkscape:cx="486.70987"
-     inkscape:cy="352.82926"
+     inkscape:cx="432.67137"
+     inkscape:cy="298.97108"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer8"
+     inkscape:current-layer="layer10"
      showgrid="true"
      inkscape:snap-center="true"
      inkscape:object-paths="true"
@@ -51,18 +51,19 @@
      inkscape:window-maximized="1"
      inkscape:bbox-nodes="true"
      showguides="false"
-     fit-margin-top="20"
-     fit-margin-bottom="20"
-     fit-margin-left="20"
-     fit-margin-right="20">
+     fit-margin-top="0"
+     fit-margin-bottom="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     inkscape:bbox-paths="true">
     <inkscape:grid
        type="xygrid"
        id="grid4781"
        units="mm"
        spacingx="3.5433071"
        spacingy="3.5433072"
-       originx="142.62118"
-       originy="-34.724506" />
+       originx="88.582675"
+       originy="-88.582689" />
   </sodipodi:namedview>
   <metadata
      id="metadata4238">
@@ -81,15 +82,14 @@
      id="layer10"
      inkscape:label="background"
      style="display:inline"
-     transform="translate(71.574909,88.453673)"
-     sodipodi:insensitive="true">
+     transform="translate(17.536406,67.105255)">
     <rect
        style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.35433072;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect4732"
-       width="850.39374"
-       height="517.32275"
-       x="0.18009049"
-       y="0.21756281"
+       width="885.82678"
+       height="602.36218"
+       x="-17.536406"
+       y="-67.105255"
        inkscape:export-filename="C:\Users\Armando\Documents\GitHub\BMS-ASC\wiki_resources\diagrams\turntable\side_diagram.png"
        inkscape:export-xdpi="100"
        inkscape:export-ydpi="100" />
@@ -99,7 +99,7 @@
      id="layer6"
      inkscape:label="box"
      style="display:inline"
-     transform="translate(142.62118,-340.06891)"
+     transform="translate(88.582677,-361.41732)"
      sodipodi:insensitive="true">
     <path
        style="opacity:1;fill:none;fill-opacity:0.49803922;fill-rule:evenodd;stroke:#000000;stroke-width:1.41732287;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -125,7 +125,7 @@
      id="layer3"
      inkscape:label="TT"
      style="display:inline"
-     transform="translate(142.62118,-340.06891)"
+     transform="translate(88.582677,-361.41732)"
      sodipodi:insensitive="true">
     <path
        style="display:inline;fill:#a28146;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.17716534;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -202,7 +202,7 @@
      inkscape:groupmode="layer"
      id="layer4"
      inkscape:label="bearing holder"
-     transform="translate(71.574909,88.453673)"
+     transform="translate(17.536406,67.105255)"
      sodipodi:insensitive="true">
     <path
        style="display:inline;opacity:1;fill:#d9f8ff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.17716534;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -229,7 +229,7 @@
      id="layer11"
      inkscape:label="TT platter"
      style="display:inline"
-     transform="translate(71.574909,88.453673)"
+     transform="translate(17.536406,67.105255)"
      sodipodi:insensitive="true">
     <rect
        style="display:inline;opacity:1;fill:#d9f8ff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.31026626;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -243,7 +243,7 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="bearing"
-     transform="translate(142.62118,-340.06891)"
+     transform="translate(88.582677,-361.41732)"
      style="display:inline"
      sodipodi:insensitive="true">
     <rect
@@ -259,7 +259,7 @@
      inkscape:groupmode="layer"
      id="layer1"
      style="display:inline"
-     transform="translate(142.62118,-340.06891)"
+     transform="translate(88.582677,-361.41732)"
      sodipodi:insensitive="true">
     <g
        style="display:inline;fill:#979797;fill-opacity:1"
@@ -313,13 +313,13 @@
      id="layer9"
      inkscape:label="ruuvisäätö"
      style="display:inline"
-     transform="translate(142.62118,-340.06891)"
+     transform="translate(88.582677,-361.41732)"
      sodipodi:insensitive="true" />
   <g
      inkscape:groupmode="layer"
      id="layer7"
      inkscape:label="felt"
-     transform="translate(71.574909,88.453673)"
+     transform="translate(17.536406,67.105255)"
      sodipodi:insensitive="true">
     <rect
        style="opacity:1;fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.17716534;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -340,7 +340,7 @@
      inkscape:groupmode="layer"
      id="layer5"
      inkscape:label="legend"
-     transform="translate(71.574909,88.453673)"
+     transform="translate(17.536406,67.105255)"
      sodipodi:insensitive="true">
     <rect
        style="display:inline;opacity:1;fill:#d1d1d1;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.17716534;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -484,7 +484,7 @@
      inkscape:groupmode="layer"
      id="layer8"
      inkscape:label="screws"
-     transform="translate(71.574909,88.453673)"
+     transform="translate(17.536406,67.105255)"
      sodipodi:insensitive="true">
     <g
        id="g5314"
